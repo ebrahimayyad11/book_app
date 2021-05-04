@@ -1,0 +1,182 @@
+@media(max-width:415px){
+        #main_div{
+            width: 80%;
+            margin-left: 10%;
+            height: 350px;
+            text-align: center;
+            margin-top: 75px;
+        }
+        
+        main div button{
+            width: 100%;
+            height: 45px;
+            border-radius: 3.5px;
+        }
+        
+        main div h1{
+            font-size: 20px;
+            margin-bottom: 50px;
+            font-weight: bold;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        #text{
+            width: 99.25%;
+            border-radius: 3.5px;
+            height: 40px;
+            border : 0px;
+            margin-bottom: 20px;
+        }
+        
+        #submit{
+            width: 100%;
+            border-radius: 3.5px;
+            height: 40px;
+            margin-bottom: 20px;
+        }
+        
+        
+        .radio{
+            width: 100%;
+            border-radius: 3.5px;
+            height: 40px;
+            margin-bottom: 20px;
+            text-align: left;
+            display: flex;
+            align-items: center;
+        }
+        
+        
+        #label-title{
+            padding-right: 14.2px;
+            margin-left: 15px;
+        }
+        
+        
+        
+
+    .results p{
+        font-size: 8.5px;
+        padding-bottom: 40px;
+        width: 70%;
+        margin-left: 15%;
+    }
+    
+.results{
+    width: 80%;
+    margin-left: 10%;
+    margin-top: 50px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.results img{
+    margin-top: 20px;
+    width: 50%;
+    margin-bottom: 25px;
+}
+
+.results h1{
+    font-size: 10px;
+    margin-bottom: 7px;
+}
+
+.results h2{
+    font-size: 10px;
+    margin-bottom: 20px;
+}
+}
+
+
+
+
+
+
+@media(min-width:416px){
+
+#main_div{
+    width: 50%;
+    margin-left: 25%;
+    height: 350px;
+    text-align: center;
+    margin-top: 75px;
+}
+
+main div button{
+    width: 100%;
+    height: 45px;
+    border-radius: 3.5px;
+}
+
+main div h1{
+    font-size: 20px;
+    margin-bottom: 50px;
+    font-weight: bold;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#text{
+    width: 99.25%;
+    border-radius: 3.5px;
+    height: 40px;
+    border : 0px;
+    margin-bottom: 20px;
+}
+
+#submit{
+    width: 100%;
+    border-radius: 3.5px;
+    height: 40px;
+    margin-bottom: 20px;
+}
+
+
+.radio{
+    width: 100%;
+    border-radius: 3.5px;
+    height: 40px;
+    margin-bottom: 20px;
+    text-align: left;
+    display: flex;
+    align-items: center;
+}
+
+
+#label-title{
+    padding-right: 14.2px;
+    margin-left: 15px;
+}
+
+
+.results p{
+    font-size: 13.5px;
+    padding-bottom: 40px;
+    width: 70%;
+    margin-left: 15%;
+}
+
+.results{
+width: 80%;
+margin-left: 10%;
+margin-top: 50px;
+margin-bottom: 10px;
+text-align: center;
+
+}
+
+.results img{
+margin-top: 20px;
+width: 50%;
+margin-bottom: 25px;
+}
+
+.results h1{
+font-size: 15px;
+margin-bottom: 7px;
+}
+
+.results h2{
+font-size: 15px;
+margin-bottom: 20px;
+}
+}
