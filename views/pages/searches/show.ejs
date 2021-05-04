@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <header>
+        <h2>Best Books!</h2>
+
+    </header>
+    <main>
+        <div class="div1">
+            <p>Search by Title or Author</p>
+        </div>
+        <div id="main_div">
+    <form action="/searches/new" method="POST">
+        <input type="text" id="text" name="search" placeholder="Enter a title or author"><br>
+
+    <div class="radio">
+        <label for="title" id="label-title">Title</label>
+        <input type="radio" value="title"  name="searchType"><br>
+    </div>
+    <div class="radio">
+        <label for="author" style="margin-left: 15px;">Author</label>
+        <input type="radio" value="author"  name="searchType"><br>
+    </div>
+
+        <input type="submit" id="submit" value="search the Google Book API">
+    </div>
+    </main>
+    </form>
+</body>
+
+<footer>
+    
+</footer>
+</html>

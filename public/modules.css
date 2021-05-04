@@ -1,0 +1,87 @@
+@media(max-width:415px){
+        
+        main div button{
+            color: white;
+            background-color: black;
+        }
+        
+       
+        #submit{
+            background-color: black;
+            color: white;
+        }
+        
+        
+        .radio{
+            background-color: rgba(236, 234, 234, 0.719);
+        }
+        
+        
+        
+
+
+    .results p{
+        color: gray;
+    }
+    
+.results{
+    background-color: rgba(236, 234, 234, 0.719);
+}
+
+.results img{
+    border: 5px solid white;
+}
+
+.results h1{
+    color: white;
+}
+
+.results h2{
+    color: gray;
+}
+}
+
+
+
+
+@media(min-width:416px){
+
+
+main div button{
+    color: white;
+    background-color: black;
+}
+
+
+#submit{
+    background-color: black;
+    color: white;
+}
+
+
+.radio{
+    background-color: rgba(236, 234, 234, 0.719);
+}
+
+
+
+.results p{
+    color: gray;
+}
+
+.results{
+background-color: rgba(236, 234, 234, 0.719);
+}
+
+.results img{
+border: 5px solid white;
+}
+
+.results h1{
+color: white;
+}
+
+.results h2{
+color: gray;
+}
+}
