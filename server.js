@@ -24,7 +24,11 @@ client = new pg.Client({
 });
 
 server.get('/',(req,res) => {
-  res.render('pages/index');
+  let query = `SELECT * FROM books;`;
+  client.query(query)
+    .then(result => {
+      res.render('pages/index', { books: result.rows});
+    });
 });
 
 server.get('/search', (req, res) => {
@@ -52,14 +56,12 @@ function searchHandler(req, res) {
       let getData = bookData.body;
       let booksArr = getData.items.map((item) =>{
         let newBook = new Books(item);
-        console.log(newBook);
         return newBook;
       });
       res.render('pages/searches/new',{books:booksArr});
     })
     .catch(error => {
       res.send(error);
-      console.log(error);
     });
 }
 
@@ -72,13 +74,12 @@ function bookIdHandler(req, res) {
   let values = [req.params.id];
   client.query(query, values)
     .then(result => {
-      console.log(result.rows[0]);
-      res.render('pages/books/show', { books: result.rows[0] });
+      res.render('pages/books/details', { books: result.rows[0] });
     });
 }
 
 function BookHandler(req, res) {
-  // console.log(req.body);
+  console.log(req.body);
   let { img, title, author, description, ISBN} = req.body;
   let query = `INSERT INTO books (img,title,author,descriptions,ISBN) VALUES ($1,$2,$3,$4,$5) RETURNING *;`;
   let values = [img, title, author, description, ISBN];

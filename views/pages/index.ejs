@@ -18,6 +18,23 @@
             <h1>Welcome to Best Books</h1>
       <a href="/search"><button>Search for a Book</button></a>
     </div>
+    <div>
+        <% books.forEach(item => {%>
+            <div class="results">
+           <img src="<%= item.img %>" alt="">
+           <h1> <%= item.title %> </h1>
+           <h2> <%= item.author %> </h2>
+
+           <form action="/books/<%= item.id %>">
+
+               <input type="submit" value="View details" class="select">
+           </form>
+
+
+        </div>
+        <% }); %>
+    </div>
+    </div>
     </main>
 
     <footer>
