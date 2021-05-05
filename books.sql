@@ -6,6 +6,15 @@ CREATE TABLE books (
     author VARCHAR(255),
     descriptions TEXT,
     img VARCHAR(255),
-    ISBN VARCHAR(255),
-    categories VARCHAR(255)
+    ISBN VARCHAR(255)
   );
+
+
+-- DROP TABLE IF EXISTS authors;
+
+-- CREATE TABLE authors (
+--     id SERIAL PRIMARY KEY,
+--     author VARCHAR(255)
+--   );
+
+  

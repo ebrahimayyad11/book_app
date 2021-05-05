@@ -11,7 +11,7 @@
 <body>
 
     <header>
-        <h2>Best Books!</h2>
+        <h2>Best item!</h2>
 
     </header>
 
@@ -27,15 +27,15 @@
            <h2> <%= item.author %> </h2>
            <p> <%= item.description %> </p>
 
-           <form action="/books/<%= item.id %>" method="POST">
-               <input type="hidden" name="title" value="<%= item.title %>">
-               <input type="hidden" name="author" value="<%= item.author %>">
-               <input type="hidden" name="img" value="<%= item.img %>">
-               <input type="hidden" name="description" value="<%= item.description %>">
-               <input type="hidden" name="ISBN" value="<%= item.ISBN %>">
-               <input type="hidden" name="categories" value="<%= item.categories %>">
+           
+           <form action="/books" method="POST">
+            <input type="hidden" name="title" value="<%= item.title %>">
+            <input type="hidden" name="author" value="<%= item.author %>">
+            <input type="hidden" name="img" value="<%= item.img %>">
+            <input type="hidden" name="description" value="<%= item.description %>">
+            <input type="hidden" name="ISBN" value="<%= item.ISBN %>">
 
-               <input type="submit" value="select this book" class="select">
+               <input type="submit" value="select" class="select">
            </form>
 
         </div>
