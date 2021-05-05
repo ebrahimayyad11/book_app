@@ -44,3 +44,12 @@ main{
     flex-direction: column;
     justify-content: center;
 }
+
+.select{
+    background-color: black;
+    color: white;
+    margin-bottom: 40px;
+    width: 80%;
+    border-radius: 3.5px;
+    height: 40px;
+}

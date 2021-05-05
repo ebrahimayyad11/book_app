@@ -3,6 +3,7 @@ const express = require('express');
 require('dotenv').config();
 const cors = require('cors');
 const superagent = require('superagent');
+const pg = require('pg');
 
 
 
@@ -15,6 +16,13 @@ server.use(express.static(__dirname + '/public'));
 server.set('view engine','ejs');
 server.use(express.urlencoded({extended:true}));
 
+
+let client;
+let DATABASE_URL = process.env.DATABASE_URL;
+client = new pg.Client({
+  connectionString: DATABASE_URL,
+});
+
 server.get('/',(req,res) => {
   res.render('pages/index');
 });
@@ -25,10 +33,11 @@ server.get('/search', (req, res) => {
 
 
 function Books (obj){
-  this.title = obj.volumeInfo.title || 'Title not available';
-  this.author = obj.volumeInfo.author || 'Author not available';
-  this.description = obj.volumeInfo.description || 'Description not available';
+  this.title = obj.volumeInfo.title || 'Title is not available';
+  this.author = obj.volumeInfo.author || 'Author is not available';
+  this.description = obj.volumeInfo.description || 'Description is not available';
   this.img = obj.volumeInfo.imageLinks.thumbnail || `https://i.imgur.com/J5LVHEL.jpg`;
+  this.ISBN = obj.volumeInfo.industryIdentifiers[0].identifier || 'ISBN is not available';
 }
 
 
@@ -42,7 +51,9 @@ function searchHandler(req, res) {
     .then((bookData) => {
       let getData = bookData.body;
       let booksArr = getData.items.map((item) =>{
-        return new Books(item);
+        let newBook = new Books(item);
+        console.log(newBook);
+        return newBook;
       });
       res.render('pages/searches/new',{books:booksArr});
     })
@@ -52,6 +63,40 @@ function searchHandler(req, res) {
     });
 }
 
-server.listen(PORT,() => {
-  console.log(`listing to PORT ${PORT}`);
-});
+
+server.get('/books/:id', bookIdHandler);
+server.post('/books', BookHandler);
+
+function bookIdHandler(req, res) {
+  let query = `SELECT * FROM books WHERE id=$1;`;
+  let values = [req.params.id];
+  client.query(query, values)
+    .then(result => {
+      console.log(result.rows[0]);
+      res.render('pages/books/show', { books: result.rows[0] });
+    });
+}
+
+function BookHandler(req, res) {
+  // console.log(req.body);
+  let { img, title, author, description, ISBN} = req.body;
+  let query = `INSERT INTO books (img,title,author,descriptions,ISBN) VALUES ($1,$2,$3,$4,$5) RETURNING *;`;
+  let values = [img, title, author, description, ISBN];
+  console.log(values);
+  client.query(query, values)
+    .then(result => {
+      // console.log(result.rows)
+      res.redirect(`/books/${result.rows[0].id}`);
+    });
+}
+
+
+
+
+
+client.connect()
+  .then(()=>{
+    server.listen(PORT,()=>{
+      console.log(`listening to port ${PORT}`);
+    });
+  });
