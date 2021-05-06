@@ -4,7 +4,7 @@ require('dotenv').config();
 const cors = require('cors');
 const superagent = require('superagent');
 const pg = require('pg');
-
+const methodOverride=require('method-override');
 
 
 
@@ -12,6 +12,7 @@ const server = express();
 const PORT = process.env.PORT || 5000;
 server.use(cors());
 
+server.use(methodOverride('_method'));
 server.use(express.static(__dirname + '/public'));
 server.set('view engine','ejs');
 server.use(express.urlencoded({extended:true}));
@@ -79,15 +80,39 @@ function bookIdHandler(req, res) {
 }
 
 function BookHandler(req, res) {
-  console.log(req.body);
   let { img, title, author, description, ISBN} = req.body;
   let query = `INSERT INTO books (img,title,author,descriptions,ISBN) VALUES ($1,$2,$3,$4,$5) RETURNING *;`;
   let values = [img, title, author, description, ISBN];
-  console.log(values);
   client.query(query, values)
     .then(result => {
       // console.log(result.rows)
       res.redirect(`/books/${result.rows[0].id}`);
+    });
+}
+
+server.delete('/delete/:id' , deleteHandler);
+server.put('/update', updateHandler);
+
+
+function deleteHandler (req,res){
+  console.log(req.params.id);
+  let id = [req.params.id];
+  let query = `DELETE FROM books WHERE id = $1;`;
+  client.query(query,id)
+    .then(() => {
+      res.redirect('/');
+    });
+}
+
+function updateHandler (req,res) {
+  let data = Object.values(req.body);
+  data[0] = parseInt(data[0]);
+  let query = `UPDATE books
+  SET img = $2, title = $3, author = $4, descriptions = $5, ISBN = $6
+  WHERE id = $1;`;
+  client.query(query,data)
+    .then(() => {
+      res.redirect(`/books/${data[0]}`);
     });
 }
 

@@ -8,6 +8,9 @@
     "dotenv": "^8.2.0",
     "ejs": "^3.1.6",
     "express": "^4.17.1",
+    "method": "^2.0.0",
+    "method-override": "^3.0.0",
+    "override": "0.0.1",
     "pg": "^8.6.0",
     "superagent": "^6.1.0"
   },

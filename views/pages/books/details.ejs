@@ -20,14 +20,32 @@
         </div>
     <div>
             <div class="results">
-                <% console.log(books) %>
            <img src="<%= books.img %>" alt="">
            <h1> <%= books.title %> </h1>
            <h2> <%= books.author %> </h2>
            <p> <%= books.descriptions %> </p>
            <h2> <%= books.isbn %> </h2>
            
-           <a href="/"><button>Back to Home page</button></a>
+           <form action="/delete/<%= books.id %>?_method=delete" method="POST">
+
+            <input style="margin-bottom: 20px;" type="submit" value="Delete Book" class="select">
+           </form>
+
+           <button class="select" style="margin-bottom: 20px;" id="update" >Update</button>
+
+           <form action="/update?_method=put" method="POST" id="updateForm">
+            <input type="hidden" name="id" value="<%= books.id %>"> <br>
+            <input class="update" type="text" name="img" value="<%= books.img %>"> <br>
+            <input class="update" type="text" name="title" value="<%= books.title %>"> <br>
+            <input class="update" type="text" name="author" value="<%= books.author %>"> <br>
+            <input class="update" type="text" name="descriptions" value="<%= books.descriptions %>"> <br>
+            <input class="update" type="text" name="isbn" value="<%= books.isbn %>"> <br>
+
+            <input style="margin-bottom: 20px;" type="submit" value="Update" class="select">
+           </form>
+
+
+           <a href="/" ><button class="select">Back to Home page</button></a>
         </div>
     </div>
 </main>
@@ -35,5 +53,7 @@
 <footer>
     
 </footer>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="/app.js"></script>
 </body>
 </html>
